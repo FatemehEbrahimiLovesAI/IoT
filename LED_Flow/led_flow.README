@@ -1,0 +1,49 @@
+# LED Control with Raspberry Pi Pico
+
+This project demonstrates how to control 8 LEDs using 3 physical buttons connected to a Raspberry Pi Pico. Each button triggers a different lighting pattern on the LEDs.
+
+## Features
+
+- 3 button inputs for user interaction
+- 8 LED outputs controlled via GPIO pins
+- 3 LED patterns:
+  - Button 1: Turns off all LEDs
+  - Button 2: Chasing light effect (right to left)
+  - Button 3: Blink all LEDs together
+
+## Hardware Requirements
+
+- Raspberry Pi Pico
+- 8 LEDs
+- 3 Push buttons
+- Resistors (220Ω for LEDs, 10kΩ for buttons if needed)
+- Breadboard & jumper wires
+
+## Wiring (example)
+
+| Component | GPIO Pin |
+|----------|-----------|
+| LED 1    | 28        |
+| LED 2    | 27        |
+| LED 3    | 26        |
+| LED 4    | 22        |
+| LED 5    | 21        |
+| LED 6    | 20        |
+| LED 7    | 19        |
+| LED 8    | 18        |
+| Button 1 | 0         |
+| Button 2 | 1         |
+| Button 3 | 2         |
+
+Make sure LEDs are connected in series with resistors and buttons are connected with pull-up resistors (or use Pin.PULL_UP in code).
+
+## Code Overview
+
+The code continuously checks the button states and performs different LED patterns accordingly. Between button checks, a simple LED animation runs to make the system visually active even when no button is pressed.
+
+## Getting Started
+
+1. Flash MicroPython onto your Raspberry Pi Pico.
+2. Upload the Python script to the board.
+3. Connect the hardware as shown above.
+4. Run the code using Thonny or any other MicroPython IDE.

@@ -1,25 +1,26 @@
-# LED Control with Raspberry Pi Pico
+# LED Animation & Control with Raspberry Pi Pico
 
-This project demonstrates how to control 8 LEDs using 3 physical buttons connected to a Raspberry Pi Pico. Each button triggers a different lighting pattern on the LEDs.
+This project demonstrates an interactive LED lighting system using a Raspberry Pi Pico. The setup includes 8 LEDs and 3 buttons. Depending on which button is pressed, different lighting effects are triggered. When no buttons are pressed, a default LED animation runs continuously.
 
 ## Features
 
-- 3 button inputs for user interaction
-- 8 LED outputs controlled via GPIO pins
-- 3 LED patterns:
+- 3 buttons as user inputs
+- 8 LEDs as visual outputs
+- 3 LED Patterns:
   - Button 1: Turns off all LEDs
-  - Button 2: Chasing light effect (right to left)
-  - Button 3: Blink all LEDs together
+  - Button 2: Running light from right to left
+  - Button 3: All LEDs blink together
+- Default behavior: Smooth animation when no button is pressed
 
 ## Hardware Requirements
 
 - Raspberry Pi Pico
 - 8 LEDs
 - 3 Push buttons
-- Resistors (220Ω for LEDs, 10kΩ for buttons if needed)
-- Breadboard & jumper wires
+- Resistors (220Ω for each LED, optional 10kΩ pull-ups for buttons)
+- Breadboard and jumper wires
 
-## Wiring (example)
+## Pin Mapping
 
 | Component | GPIO Pin |
 |----------|-----------|
@@ -35,15 +36,20 @@ This project demonstrates how to control 8 LEDs using 3 physical buttons connect
 | Button 2 | 1         |
 | Button 3 | 2         |
 
-Make sure LEDs are connected in series with resistors and buttons are connected with pull-up resistors (or use Pin.PULL_UP in code).
+## Code Behavior
 
-## Code Overview
+- Startup: All pins are initialized; LEDs are mapped in a dictionary for easier access.
+- Loop: Continuously runs an LED animation and checks for button presses.
+- Functionality:
+  - st1(): Turns off all LEDs.
+  - st2(): A light "runs" from LED 8 to LED 1 with delays.
+  - st3(): All LEDs blink on and off.
+  - ask(): Checks button status and calls the appropriate pattern.
 
-The code continuously checks the button states and performs different LED patterns accordingly. Between button checks, a simple LED animation runs to make the system visually active even when no button is pressed.
+## How to Use
 
-## Getting Started
-
-1. Flash MicroPython onto your Raspberry Pi Pico.
-2. Upload the Python script to the board.
-3. Connect the hardware as shown above.
-4. Run the code using Thonny or any other MicroPython IDE.
+1. Connect the LEDs and buttons according to the pin mapping.
+2. Flash MicroPython firmware on your Pico.
+3. Copy the Python script to the board.
+4. Open Thonny or another MicroPython editor.
+5. Run the script and interact using the buttons.
